@@ -146,14 +146,56 @@ public class greedy{
         return maxJobs; 
     }
 
+    // chocola problem 
+
+    public static int choclate(Integer hor[],Integer ver[]){
+        Arrays.sort(hor, Collections.reverseOrder());
+        Arrays.sort(ver, Collections.reverseOrder());
+
+        int h = 0;
+        int v = 0;
+        int hp = 1;
+        int vp =1;
+        int cost =0;
+        while(h<hor.length && v<ver.length){
+            if(hor[h]>=ver[v]){
+                cost += hor[h]*vp;
+                hp++;
+                h++;
+            } else {
+                cost += ver[v]*hp;
+                vp++;
+                v++;
+            }
+        }
+        while (h<hor.length){
+            cost += hor[h]*vp;
+            h++;
+            hp++;
+        } 
+        while(v<ver.length){
+            cost += ver[v]*hp;
+            v++;
+            vp++;
+        }
+        return cost;
+    }
+
+
+
     public static void main(String[] args) {
         
         int jobs[][] = {{4,20},{2,30},{1,40},{1,10}}; 
         
-        
+        // choclate problem 
 
+        Integer hor [] = {4,1,2};
+        Integer ver [] = {2,1,3,1,4};
 
-        System.out.println(jobSeq(jobs));
+        System.out.println(choclate(hor,ver));
+ 
+
+        // System.out.println(jobSeq(jobs));
 
 
 
